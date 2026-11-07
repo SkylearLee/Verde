@@ -189,59 +189,39 @@ const pages = {
 
     // BUILD
 
-    build: {
+    
+build: {
 
-        eyebrow: "PILLAR 01 · CREATE & EXPERIMENT",
-        title: "Build 💻",
-        description: "Turn ideas into something real.",
+    eyebrow: "PILLAR 01 · CREATE & EXPERIMENT",
+    title: "Build 💻",
+    description: "Turn ideas into something real.",
 
-        content: `
+    content: `
 
-            <div class="workspace-banner green">
-                <span class="section-eyebrow">CURRENT NOVEMBER PROJECT</span>
-                <h3>Computer Vision Camera 📷</h3>
-                <p>
-                    Learn to use your laptop camera, Python, and computer
-                    vision to detect objects, movements, and interesting events.
-                </p>
-            </div>
+        <div class="workspace-banner green">
+            <span class="section-eyebrow">CURRENT NOVEMBER PROJECT</span>
+            <h3>Computer Vision Camera 📷</h3>
+            <p>
+                Learn to use your laptop camera, Python, and computer
+                vision to detect objects, movements, and interesting events.
+            </p>
+        </div>
 
-            <section class="workspace-section">
-                <h3>Project overview</h3>
+        <section class="workspace-section">
 
-                <div class="workspace-grid">
+            <details class="roadmap-dropdown">
 
-                    <div class="workspace-card">
-                        <span class="workspace-icon">🐍</span>
-                        <h4>Python</h4>
-                        <p>Learn to access and process live camera footage.</p>
+                <summary class="roadmap-summary">
+                    <div>
+                        <span class="eyebrow">YOUR LEARNING PATH</span>
+                        <h3>Learning roadmap</h3>
+                        <p>Explore the steps of your project.</p>
                     </div>
 
-                    <div class="workspace-card">
-                        <span class="workspace-icon">👁️</span>
-                        <h4>OpenCV</h4>
-                        <p>Explore computer vision and image processing.</p>
-                    </div>
+                    <span class="roadmap-arrow">⌄</span>
+                </summary>
 
-                    <div class="workspace-card">
-                        <span class="workspace-icon">🎯</span>
-                        <h4>Detection</h4>
-                        <p>Experiment with motion and object recognition.</p>
-                    </div>
-
-                    <div class="workspace-card">
-                        <span class="workspace-icon">⚙️</span>
-                        <h4>Automation</h4>
-                        <p>Make the system perform an action when something is detected.</p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section class="workspace-section">
-                <h3>Learning roadmap</h3>
-
-                <div class="milestone-list">
+                <div class="milestone-list roadmap-content">
 
                     ${createMilestones([
                         "Explore the basics of computer vision",
@@ -255,15 +235,67 @@ const pages = {
                     ])}
 
                 </div>
-            </section>
 
-            <div class="workspace-note green-note">
-                🌱 Learn by building. You don't need to understand everything
-                before you start experimenting.
-            </div>
+            </details>
 
-        `
-    },
+        </section>
+
+    `
+},
+
+build: {
+
+    eyebrow: "PILLAR 01 · CREATE & EXPERIMENT",
+    title: "Build 💻",
+    description: "Turn ideas into something real.",
+
+    content: `
+
+        <div class="workspace-banner green">
+            <span class="section-eyebrow">CURRENT NOVEMBER PROJECT</span>
+            <h3>Computer Vision Camera 📷</h3>
+            <p>
+                Learn to use your laptop camera, Python, and computer
+                vision to detect objects, movements, and interesting events.
+            </p>
+        </div>
+
+        <section class="workspace-section">
+
+            <details class="roadmap-dropdown">
+
+                <summary class="roadmap-summary">
+                    <div>
+                        <span class="eyebrow">YOUR LEARNING PATH</span>
+                        <h3>Learning roadmap</h3>
+                        <p>Explore the steps of your project.</p>
+                    </div>
+
+                    <span class="roadmap-arrow">⌄</span>
+                </summary>
+
+                <div class="milestone-list roadmap-content">
+
+                    ${createMilestones([
+                        "Explore the basics of computer vision",
+                        "Set up Python and OpenCV",
+                        "Access the laptop webcam",
+                        "Implement basic motion detection",
+                        "Experiment with object detection",
+                        "Explore gesture recognition",
+                        "Decide on the final application",
+                        "Build a working prototype"
+                    ])}
+
+                </div>
+
+            </details>
+
+        </section>
+
+    `
+},
+
 
 
     // CREATE
@@ -668,6 +700,23 @@ function navigateTo(pageName) {
         top: 0,
         behavior: "smooth"
     });
+
+    // Notify other application modules that the page changed.
+
+    document.dispatchEvent(
+    new CustomEvent("verde:pagechange", {
+        detail: { pageName: pageName }
+    })
+);
+
+// Initialize the BUILD task manager when opening BUILD.
+
+if (
+    pageName === "build" &&
+    typeof initializeTaskManager === "function"
+) {
+    initializeTaskManager();
+}
 
 }
 

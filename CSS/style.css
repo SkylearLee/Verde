@@ -837,3 +837,332 @@ footer {
     }
 }
 
+
+/* ==========================================
+   VERDE — INTERACTIVE TASK MANAGER
+========================================== */
+
+.task-manager {
+    margin-top: 38px;
+}
+
+.task-count {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.task-progress-card {
+    background: #F0EDF4;
+    padding: 19px 21px;
+    border-radius: 13px;
+    margin-bottom: 20px;
+}
+
+.task-progress-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.task-progress-heading strong {
+    color: #51435E;
+}
+
+.task-progress-heading span {
+    color: var(--deep-purple);
+}
+
+.task-progress-track {
+    height: 8px;
+}
+
+.task-progress-card .progress-fill {
+    background: linear-gradient(90deg, #A38BC4, #71876F);
+    transition: width 0.3s ease;
+}
+
+.task-progress-card p {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 10px;
+}
+
+.task-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 19px;
+}
+
+.task-form input {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--border);
+    background: white;
+    padding: 13px 15px;
+    border-radius: 10px;
+    outline: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 12px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.task-form input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(146,121,180,0.12);
+}
+
+.task-form .primary-button {
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.task-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.task-filter {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--muted);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.task-filter:hover {
+    border-color: var(--purple);
+    color: var(--deep-purple);
+}
+
+.task-filter.active {
+    background: var(--deep-purple);
+    border-color: var(--deep-purple);
+    color: white;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.task-row {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px 17px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    transition: background 0.2s;
+}
+
+.task-row:hover {
+    background: #FCFAFD;
+}
+
+.task-checkbox-label {
+    position: relative;
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.task-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.custom-checkbox {
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid #C9C1D2;
+    border-radius: 6px;
+    pointer-events: none;
+    transition: all 0.2s;
+}
+
+.task-checkbox:checked + .custom-checkbox {
+    background: var(--sage);
+    border-color: var(--sage);
+}
+
+.task-checkbox:checked + .custom-checkbox::after {
+    content: "✓";
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    left: 3px;
+}
+
+.task-title {
+    flex: 1;
+    min-width: 0;
+    font-size: 12px;
+    color: var(--text);
+    overflow-wrap: anywhere;
+    transition: color 0.2s;
+}
+
+.task-row.completed .task-title {
+    color: #AAA5AE;
+    text-decoration: line-through;
+}
+
+.delete-task {
+    border: none;
+    background: transparent;
+    color: #B5AAB8;
+    font-size: 21px;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+
+.delete-task:hover {
+    color: #B66D78;
+}
+
+.empty-tasks {
+    background: white;
+    border: 1px dashed #DCD4E4;
+    padding: 35px 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.empty-tasks span {
+    font-size: 28px;
+}
+
+.empty-tasks h4 {
+    font-family: 'Playfair Display', serif;
+    margin: 10px 0 6px;
+    color: #51435E;
+}
+
+.empty-tasks p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.text-button {
+    background: none;
+    border: none;
+    color: #9279B4;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.text-button:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+
+    .task-form {
+        flex-direction: column;
+    }
+
+    .task-form .primary-button {
+        width: 100%;
+    }
+
+    .task-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+
+/* ==========================================
+   VERDE — COLLAPSIBLE ROADMAP
+========================================== */
+
+.roadmap-dropdown {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.roadmap-summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 21px 23px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.roadmap-summary::-webkit-details-marker {
+    display: none;
+}
+
+.roadmap-summary h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    margin: 6px 0;
+    color: #443C4E;
+}
+
+.roadmap-summary p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.roadmap-arrow {
+    font-size: 24px;
+    color: var(--purple);
+    transition: transform 0.25s ease;
+}
+
+.roadmap-dropdown[open] .roadmap-arrow {
+    transform: rotate(180deg);
+}
+
+.roadmap-content {
+    padding: 0 20px 20px;
+}
+
+.roadmap-dropdown[open] .roadmap-content {
+    animation: roadmapAppear 0.25s ease;
+}
+
+@keyframes roadmapAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
