@@ -358,33 +358,29 @@ create: {
                     </div>
                 </div>
 
-                <div class="learn-feature-grid">
+                        
+        <div class="learn-feature-grid">
 
-                    <button class="learn-feature-card library-card"
-                        data-learn-action="library">
-                        <span class="learn-card-icon">📚</span>
-                        <span class="learn-card-label">COLLECT & READ</span>
-                        <h4>Research Library</h4>
-                        <p>
-                            Save papers, articles, books, videos,
-                            and anything worth exploring.
-                        </p>
-                        <span class="learn-card-link">Open library ↗</span>
-                    </button>
+            <button class="learn-feature-card library-card"
+                data-learn-action="library">
 
-                    <button class="learn-feature-card journal-card"
-                        data-learn-action="journal">
-                        <span class="learn-card-icon">✎</span>
-                        <span class="learn-card-label">REFLECT & REMEMBER</span>
-                        <h4>Learning Journal</h4>
-                        <p>
-                            Record discoveries, interesting thoughts,
-                            questions, and things you've learned.
-                        </p>
-                        <span class="learn-card-link">Open journal ↗</span>
-                    </button>
+                <span class="learn-card-icon">📚</span>
+                <span class="learn-card-label">YOUR PERSONAL COLLECTION</span>
 
-                </div>
+                <h4>Research Library</h4>
+
+                <p>
+                    Save research papers, articles, books, videos,
+                    and interesting discoveries. Organize your resources,
+                    track what you're reading, and keep your own notes.
+                </p>
+
+                <span class="learn-card-link">Explore your library ↗</span>
+
+            </button>
+
+        </div>
+
 
                 <div class="learn-section-heading explore-heading">
                     <div>
@@ -439,7 +435,6 @@ create: {
                 </div>
 
                 <section id="learn-library-view" hidden></section>
-                <section id="learn-journal-view" hidden></section>
 
             </div>
 
