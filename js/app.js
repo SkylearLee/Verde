@@ -323,58 +323,129 @@ create: {
 
     // LEARN
 
+    
     learn: {
 
         eyebrow: "PILLAR 03 · DISCOVER & EXPLORE",
-        title: "Learn 📚",
-        description: "Follow your curiosity beyond the classroom.",
+        title: "The Knowledge Garden 🌿",
+        description: "Follow your curiosity, collect discoveries, and let ideas grow.",
 
         content: `
 
-            <div class="workspace-banner green">
-                <span class="section-eyebrow">CURIOSITY LAB</span>
-                <h3>Your personal university.</h3>
-                <p>
-                    Explore topics because they interest you,
-                    not because they're on an exam.
-                </p>
-            </div>
+            <div id="learn-studio-root" class="learn-studio">
 
-            <div class="workspace-grid">
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">🧠</span>
-                    <h4>Neuroscience</h4>
-                    <p>Brain function, behavior, neurotoxicology, and cognition.</p>
+                <div class="learn-welcome">
+                    <div class="learn-welcome-text">
+                        <span class="section-eyebrow">A LITTLE SPACE FOR CURIOSITY</span>
+                        <h2>Grow your mind.<br><em>One discovery at a time.</em></h2>
+                        <p>
+                            Read something interesting. Follow a question.
+                            Explore something completely unfamiliar.
+                            There's no syllabus here.
+                        </p>
+                    </div>
+                    <div class="learn-welcome-decoration">
+                        <span>✿</span>
+                        <span>❧</span>
+                        <span>🌱</span>
+                    </div>
                 </div>
 
-                <div class="workspace-card">
-                    <span class="workspace-icon">🌱</span>
-                    <h4>Environmental science</h4>
-                    <p>Environmental toxicants, plant toxins, and ecosystems.</p>
+                <div class="learn-section-heading">
+                    <div>
+                        <span class="section-eyebrow">YOUR LEARNING SPACE</span>
+                        <h3>Where would you like to wander?</h3>
+                    </div>
                 </div>
 
-                <div class="workspace-card">
-                    <span class="workspace-icon">🤖</span>
-                    <h4>Artificial intelligence</h4>
-                    <p>Machine learning, computer vision, and emerging technology.</p>
+                <div class="learn-feature-grid">
+
+                    <button class="learn-feature-card library-card"
+                        data-learn-action="library">
+                        <span class="learn-card-icon">📚</span>
+                        <span class="learn-card-label">COLLECT & READ</span>
+                        <h4>Research Library</h4>
+                        <p>
+                            Save papers, articles, books, videos,
+                            and anything worth exploring.
+                        </p>
+                        <span class="learn-card-link">Open library ↗</span>
+                    </button>
+
+                    <button class="learn-feature-card journal-card"
+                        data-learn-action="journal">
+                        <span class="learn-card-icon">✎</span>
+                        <span class="learn-card-label">REFLECT & REMEMBER</span>
+                        <h4>Learning Journal</h4>
+                        <p>
+                            Record discoveries, interesting thoughts,
+                            questions, and things you've learned.
+                        </p>
+                        <span class="learn-card-link">Open journal ↗</span>
+                    </button>
+
                 </div>
 
-                <div class="workspace-card">
-                    <span class="workspace-icon">🌍</span>
-                    <h4>General knowledge</h4>
-                    <p>Psychology, philosophy, economics, and history.</p>
+                <div class="learn-section-heading explore-heading">
+                    <div>
+                        <span class="section-eyebrow">FOLLOW YOUR CURIOSITY</span>
+                        <h3>Explore your interests</h3>
+                        <p>Little paths you can wander down whenever you like.</p>
+                    </div>
                 </div>
 
-            </div>
+                <div class="learn-topic-grid">
 
-            <div class="workspace-note green-note">
-                ✧ Save interesting discoveries, questions, and resources.
-                Curiosity doesn't need a syllabus.
+                    <div class="learn-topic-card">
+                        <span>🧠</span>
+                        <div>
+                            <h4>Neuroscience</h4>
+                            <p>Brain function, behavior, cognition, and neurotoxicology.</p>
+                        </div>
+                    </div>
+
+                    <div class="learn-topic-card">
+                        <span>🌱</span>
+                        <div>
+                            <h4>Environmental Science</h4>
+                            <p>Environmental toxicants, plant toxins, and ecosystems.</p>
+                        </div>
+                    </div>
+
+                    <div class="learn-topic-card">
+                        <span>🤖</span>
+                        <div>
+                            <h4>Artificial Intelligence</h4>
+                            <p>Machine learning, computer vision, and emerging technology.</p>
+                        </div>
+                    </div>
+
+                    <div class="learn-topic-card">
+                        <span>🌍</span>
+                        <div>
+                            <h4>Psychology & Society</h4>
+                            <p>Human behavior, economics, philosophy, and history.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="learn-bottom-note">
+                    <span>✧</span>
+                    <p>
+                        You don't have to learn something every day.
+                        Sometimes following one interesting question is enough.
+                    </p>
+                </div>
+
+                <section id="learn-library-view" hidden></section>
+                <section id="learn-journal-view" hidden></section>
+
             </div>
 
         `
     },
+
 
 
     // ADVANCE

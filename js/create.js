@@ -164,7 +164,7 @@ function initializeCreateStudio() {
                     </p>
 
                     <span class="create-feature-link">
-                        Coming soon ✧
+                        Create something new ↗
                     </span>
                 </button>
 
