@@ -77,6 +77,7 @@ function showLearnHome() {
     if (!root) return;
 
     root.querySelector(".learn-welcome").hidden = false;
+
     root.querySelectorAll(
         ".learn-section-heading, .learn-feature-grid, .learn-topic-grid, .learn-bottom-note"
     ).forEach(element => {
@@ -84,7 +85,6 @@ function showLearnHome() {
     });
 
     root.querySelector("#learn-library-view").hidden = true;
-    root.querySelector("#learn-journal-view").hidden = true;
 }
 
 function showResearchLibrary() {
@@ -98,8 +98,6 @@ function showResearchLibrary() {
     ).forEach(element => {
         element.hidden = true;
     });
-
-    root.querySelector("#learn-journal-view").hidden = true;
 
     const view = root.querySelector("#learn-library-view");
     view.hidden = false;
