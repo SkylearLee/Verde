@@ -1,80 +1,770 @@
 
-/* =================================
-   VERDE — APPLICATION LOGIC
-================================= */
+/* ==========================================
+   VERDE — APPLICATION ENGINE
+   Version 1.1
+========================================== */
 
-// Display today's date
-const dateElement = document.getElementById("current-date");
 
-function updateDate() {
-    const today = new Date();
+/* ==========================================
+   1. INITIALIZE THE APPLICATION
+========================================== */
 
-    dateElement.textContent = today.toLocaleDateString("en-US", {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-    });
+const mainContent = document.querySelector(".main-content");
+const topbar = document.querySelector(".topbar");
+const breadcrumb = document.querySelector(".breadcrumb");
+const navItems = document.querySelectorAll(".nav-item");
+
+// Make sure the page container exists.
+// This automatically fixes the missing-container error.
+
+let pageContainer = document.getElementById("page-container");
+
+if (!pageContainer) {
+
+    if (!mainContent || !topbar) {
+        throw new Error(
+            "VERDE could not find the main content or topbar."
+        );
+    }
+
+    pageContainer = document.createElement("div");
+    pageContainer.id = "page-container";
+
+    let nextElement = topbar.nextSibling;
+
+    while (nextElement) {
+        const currentElement = nextElement;
+        nextElement = nextElement.nextSibling;
+        pageContainer.appendChild(currentElement);
+    }
+
+    mainContent.appendChild(pageContainer);
+
+    console.log("VERDE: Page container created automatically.");
 }
 
-updateDate();
+// Save the original homepage.
+const homeContent = pageContainer.innerHTML;
 
 
-// Sidebar navigation
-const navItems = document.querySelectorAll(".nav-item");
+/* ==========================================
+   2. REUSABLE HTML HELPERS
+========================================== */
+
+// Creates numbered milestone lists.
+
+function createMilestones(items) {
+
+    return items.map((item, index) => `
+        <div class="milestone">
+            <span class="milestone-number">
+                ${index + 1}
+            </span>
+            <span>${item}</span>
+        </div>
+    `).join("");
+
+}
+
+
+// Creates weekly schedule entries.
+
+function createWeeklySchedule(items) {
+
+    return items.map(item => `
+        <div class="workspace-list-item">
+            <span class="item-icon">${item.icon}</span>
+            <div>
+                <strong>${item.day}</strong>
+                <p>${item.pillar}</p>
+            </div>
+        </div>
+    `).join("");
+
+}
+
+
+/* ==========================================
+   3. PAGE CONTENT
+========================================== */
+
+const pages = {
+
+    // DAILY FOCUS
+
+    daily: {
+
+        eyebrow: "YOUR DAILY SPACE",
+        title: "Daily Focus ☀",
+        description: "A little intention goes a long way.",
+
+        content: `
+
+            <div class="workspace-banner purple">
+                <span class="section-eyebrow">TODAY IS YOURS</span>
+                <h3>What kind of day are we having?</h3>
+                <p>Choose your energy level. There's no wrong answer.</p>
+            </div>
+
+            <section class="workspace-section">
+                <h3>Choose your energy</h3>
+
+                <div class="energy-grid">
+
+                    <div class="energy-card">
+                        <span>🌙</span>
+                        <h4>Low energy</h4>
+                        <p>Take it easy. Read, journal, organize, or rest.</p>
+                    </div>
+
+                    <div class="energy-card">
+                        <span>☀️</span>
+                        <h4>Normal energy</h4>
+                        <p>Choose one project and spend some focused time on it.</p>
+                    </div>
+
+                    <div class="energy-card">
+                        <span>⚡</span>
+                        <h4>High energy</h4>
+                        <p>Experiment, explore, and make progress on multiple things.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="workspace-section">
+                <h3>Today's intentions</h3>
+
+                <div class="workspace-card">
+                    <p>Your interactive daily task manager is coming soon!</p>
+                </div>
+            </section>
+
+        `
+    },
+
+
+    // WEEKLY OVERVIEW
+
+    weekly: {
+
+        eyebrow: "YOUR WEEK AT A GLANCE",
+        title: "Weekly Overview 🗓",
+        description: "A flexible rhythm for everything you want to explore.",
+
+        content: `
+
+            <div class="workspace-banner green">
+                <span class="section-eyebrow">YOUR WEEKLY RHYTHM</span>
+                <h3>Make room for what matters.</h3>
+                <p>Use these themes as a guide, not a strict schedule.</p>
+            </div>
+
+            <section class="workspace-section">
+                <h3>Your pillar rotation</h3>
+
+                <div class="workspace-list">
+
+                    ${createWeeklySchedule([
+                        {day: "Monday", icon: "💻", pillar: "BUILD"},
+                        {day: "Tuesday", icon: "🚀", pillar: "ADVANCE"},
+                        {day: "Wednesday", icon: "📚", pillar: "LEARN"},
+                        {day: "Thursday", icon: "💻", pillar: "BUILD"},
+                        {day: "Friday", icon: "🚀", pillar: "ADVANCE"},
+                        {day: "Saturday", icon: "🌿", pillar: "LIVE"},
+                        {day: "Sunday", icon: "🌿", pillar: "LIVE / REST"}
+                    ])}
+
+                </div>
+            </section>
+
+            <div class="workspace-note green-note">
+                ✿ Remember: missed tasks are not debts.
+                Adjust your week as needed.
+            </div>
+
+        `
+    },
+
+
+    // BUILD
+
+    build: {
+
+        eyebrow: "PILLAR 01 · CREATE & EXPERIMENT",
+        title: "Build 💻",
+        description: "Turn ideas into something real.",
+
+        content: `
+
+            <div class="workspace-banner green">
+                <span class="section-eyebrow">CURRENT NOVEMBER PROJECT</span>
+                <h3>Computer Vision Camera 📷</h3>
+                <p>
+                    Learn to use your laptop camera, Python, and computer
+                    vision to detect objects, movements, and interesting events.
+                </p>
+            </div>
+
+            <section class="workspace-section">
+                <h3>Project overview</h3>
+
+                <div class="workspace-grid">
+
+                    <div class="workspace-card">
+                        <span class="workspace-icon">🐍</span>
+                        <h4>Python</h4>
+                        <p>Learn to access and process live camera footage.</p>
+                    </div>
+
+                    <div class="workspace-card">
+                        <span class="workspace-icon">👁️</span>
+                        <h4>OpenCV</h4>
+                        <p>Explore computer vision and image processing.</p>
+                    </div>
+
+                    <div class="workspace-card">
+                        <span class="workspace-icon">🎯</span>
+                        <h4>Detection</h4>
+                        <p>Experiment with motion and object recognition.</p>
+                    </div>
+
+                    <div class="workspace-card">
+                        <span class="workspace-icon">⚙️</span>
+                        <h4>Automation</h4>
+                        <p>Make the system perform an action when something is detected.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="workspace-section">
+                <h3>Learning roadmap</h3>
+
+                <div class="milestone-list">
+
+                    ${createMilestones([
+                        "Explore the basics of computer vision",
+                        "Set up Python and OpenCV",
+                        "Access the laptop webcam",
+                        "Implement basic motion detection",
+                        "Experiment with object detection",
+                        "Explore gesture recognition",
+                        "Decide on the final application",
+                        "Build a working prototype"
+                    ])}
+
+                </div>
+            </section>
+
+            <div class="workspace-note green-note">
+                🌱 Learn by building. You don't need to understand everything
+                before you start experimenting.
+            </div>
+
+        `
+    },
+
+
+    // CREATE
+
+    create: {
+
+        eyebrow: "PILLAR 02 · EXPRESS & IMAGINE",
+        title: "Create 🎨",
+        description: "Make room for your creative side.",
+
+        content: `
+
+            <div class="workspace-banner purple">
+                <span class="section-eyebrow">YOUR CREATIVE SPACE</span>
+                <h3>Make things simply because you can.</h3>
+                <p>
+                    No deadlines, no quotas, no pressure.
+                    Just a place for your imagination.
+                </p>
+            </div>
+
+            <div class="workspace-grid">
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">✍️</span>
+                    <h4>Book writing</h4>
+                    <p>Continue your manuscript whenever inspiration strikes.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">📓</span>
+                    <h4>Journaling</h4>
+                    <p>Thoughts, reflections, and random observations.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🖌️</span>
+                    <h4>Art & drawing</h4>
+                    <p>Sketching, painting, and experimenting with crafts.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">💡</span>
+                    <h4>Creative experiments</h4>
+                    <p>Try something new without worrying about the outcome.</p>
+                </div>
+
+            </div>
+
+            <div class="workspace-note">
+                ♡ You don't have to create something every week.
+                This space is here whenever you need it.
+            </div>
+
+        `
+    },
+
+
+    // LEARN
+
+    learn: {
+
+        eyebrow: "PILLAR 03 · DISCOVER & EXPLORE",
+        title: "Learn 📚",
+        description: "Follow your curiosity beyond the classroom.",
+
+        content: `
+
+            <div class="workspace-banner green">
+                <span class="section-eyebrow">CURIOSITY LAB</span>
+                <h3>Your personal university.</h3>
+                <p>
+                    Explore topics because they interest you,
+                    not because they're on an exam.
+                </p>
+            </div>
+
+            <div class="workspace-grid">
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🧠</span>
+                    <h4>Neuroscience</h4>
+                    <p>Brain function, behavior, neurotoxicology, and cognition.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🌱</span>
+                    <h4>Environmental science</h4>
+                    <p>Environmental toxicants, plant toxins, and ecosystems.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🤖</span>
+                    <h4>Artificial intelligence</h4>
+                    <p>Machine learning, computer vision, and emerging technology.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🌍</span>
+                    <h4>General knowledge</h4>
+                    <p>Psychology, philosophy, economics, and history.</p>
+                </div>
+
+            </div>
+
+            <div class="workspace-note green-note">
+                ✧ Save interesting discoveries, questions, and resources.
+                Curiosity doesn't need a syllabus.
+            </div>
+
+        `
+    },
+
+
+    // ADVANCE
+
+    advance: {
+
+        eyebrow: "PILLAR 04 · GROW & DEVELOP",
+        title: "Advance 🚀",
+        description: "Build toward the future you're excited about.",
+
+        content: `
+
+            <div class="workspace-banner purple">
+                <span class="section-eyebrow">PROFESSIONAL DEVELOPMENT</span>
+                <h3>Your future is something you build.</h3>
+                <p>
+                    Develop your professional presence and explore
+                    opportunities that align with your interests.
+                </p>
+            </div>
+
+            <div class="workspace-grid">
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🌐</span>
+                    <h4>Personal website</h4>
+                    <p>
+                        Build your online portfolio, showcase projects,
+                        research interests, experience, and skills.
+                    </p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">💼</span>
+                    <h4>Internship applications</h4>
+                    <p>Research and apply to Summer 2027 opportunities.</p>
+                </div>
+
+            </div>
+
+            <section class="workspace-section">
+                <h3>November objectives</h3>
+
+                <div class="milestone-list">
+
+                    ${createMilestones([
+                        "Plan personal website structure",
+                        "Build the website",
+                        "Add resume and experience",
+                        "Find relevant internships",
+                        "Submit 3–5 thoughtful applications"
+                    ])}
+
+                </div>
+            </section>
+
+        `
+    },
+
+
+    // LIVE
+
+    live: {
+
+        eyebrow: "PILLAR 05 · EXPERIENCE & ENJOY",
+        title: "Live 🌿",
+        description: "Enjoy the life you're building.",
+
+        content: `
+
+            <div class="workspace-banner green">
+                <span class="section-eyebrow">GUILT-FREE LIVING</span>
+                <h3>You are allowed to just enjoy things.</h3>
+                <p>
+                    This isn't another productivity project.
+                    It's a reminder that your life is happening right now.
+                </p>
+            </div>
+
+            <div class="workspace-grid">
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🧗</span>
+                    <h4>Climbing & fitness</h4>
+                    <p>Bouldering, gym sessions, and physical activities.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🎨</span>
+                    <h4>Arts & crafts</h4>
+                    <p>Creative events and making things with your hands.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🍳</span>
+                    <h4>Cooking</h4>
+                    <p>New recipes, experimenting, and good food.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🫶</span>
+                    <h4>People & experiences</h4>
+                    <p>Friends, loved ones, exploring, and trying new things.</p>
+                </div>
+
+            </div>
+
+            <div class="workspace-note green-note">
+                🌿 No productivity scores. No required milestones.
+                Enjoy your life.
+            </div>
+
+        `
+    },
+
+
+    // IDEA VAULT
+
+    ideas: {
+
+        eyebrow: "YOUR PERSONAL IDEA COLLECTION",
+        title: "Idea Vault ✧",
+        description: "A home for every random thought worth keeping.",
+
+        content: `
+
+            <div class="workspace-banner purple">
+                <span class="section-eyebrow">CATCH THE THOUGHT</span>
+                <h3>Never lose a good idea again.</h3>
+                <p>
+                    A home for random ideas, unfinished concepts,
+                    inventions, projects, and things you want to explore.
+                </p>
+            </div>
+
+            <div class="workspace-card">
+                <span class="workspace-icon">💭</span>
+                <h4>Your idea collection is coming soon.</h4>
+                <p>
+                    We're going to build individual idea pages with titles,
+                    notes, categories, tags, and the ability to turn an
+                    idea into a project.
+                </p>
+            </div>
+
+        `
+    },
+
+
+    // RESOURCES
+
+    resources: {
+
+        eyebrow: "YOUR PERSONAL LIBRARY",
+        title: "Resources ♡",
+        description: "Keep the things you want to revisit close.",
+
+        content: `
+
+            <div class="workspace-banner green">
+                <span class="section-eyebrow">SAVE FOR LATER</span>
+                <h3>A collection of things worth exploring.</h3>
+                <p>
+                    Books, tutorials, articles, research papers,
+                    videos, and inspiration.
+                </p>
+            </div>
+
+            <div class="workspace-grid">
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">📖</span>
+                    <h4>Books & reading</h4>
+                    <p>Fiction, nonfiction, and books to explore.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🔬</span>
+                    <h4>Research & articles</h4>
+                    <p>Scientific papers and interesting discoveries.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">🎓</span>
+                    <h4>Courses & tutorials</h4>
+                    <p>Learning resources and educational material.</p>
+                </div>
+
+                <div class="workspace-card">
+                    <span class="workspace-icon">✨</span>
+                    <h4>Inspiration</h4>
+                    <p>Websites, designs, projects, and ideas.</p>
+                </div>
+
+            </div>
+
+        `
+    }
+
+};
+
+
+/* ==========================================
+   4. NAVIGATION ENGINE
+========================================== */
+
+function navigateTo(pageName) {
+
+    // Display the homepage.
+
+    if (pageName === "home") {
+
+        pageContainer.innerHTML = homeContent;
+
+    }
+
+    // Display another workspace.
+
+    else if (pages[pageName]) {
+
+        const page = pages[pageName];
+
+        pageContainer.innerHTML = `
+
+            <section class="page-header">
+
+                <span class="eyebrow">
+                    ${page.eyebrow}
+                </span>
+
+                <h2>${page.title}</h2>
+
+                <p>${page.description}</p>
+
+            </section>
+
+            ${page.content}
+
+            <footer>
+                <span>MADE WITH ♡ AND A LITTLE CURIOSITY</span>
+                <span>VERDE · 2026</span>
+            </footer>
+
+        `;
+
+    }
+
+    else {
+        console.warn("VERDE: Page not found:", pageName);
+        return;
+    }
+
+
+    // Update sidebar selection.
+
+    navItems.forEach(item => {
+
+        item.classList.toggle(
+            "active",
+            item.dataset.page === pageName
+        );
+
+    });
+
+
+    // Update breadcrumb.
+
+    const selectedItem = document.querySelector(
+        `.nav-item[data-page="${pageName}"]`
+    );
+
+    const pageLabel = selectedItem
+        ? selectedItem.textContent.trim()
+        : "Home";
+
+    breadcrumb.innerHTML =
+        `My Universe <span>/</span> ${pageLabel}`;
+
+
+    // Reconnect homepage interactions.
+
+    if (pageName === "home") {
+        attachHomeEvents();
+    }
+
+
+    // Return to top when switching pages.
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* ==========================================
+   5. SIDEBAR INTERACTIONS
+========================================== */
 
 navItems.forEach(item => {
 
-    item.addEventListener("click", (event) => {
+    item.addEventListener("click", event => {
+
         event.preventDefault();
 
-        // Remove active styling from all items
-        navItems.forEach(nav => {
-            nav.classList.remove("active");
+        navigateTo(item.dataset.page);
+
+    });
+
+});
+
+
+/* ==========================================
+   6. HOMEPAGE INTERACTIONS
+========================================== */
+
+function attachHomeEvents() {
+
+    // Make pillar cards clickable.
+
+    const pillarCards = document.querySelectorAll(
+        ".pillar-card"
+    );
+
+    pillarCards.forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            navigateTo(card.dataset.pillar);
+
         });
 
-        // Highlight selected item
-        item.classList.add("active");
-
-        const page = item.dataset.page;
-
-        console.log("Selected page:", page);
     });
 
-});
+
+    // Connect the daily focus button.
+
+    const focusButton = document.getElementById(
+        "focus-button"
+    );
+
+    if (focusButton) {
+
+        focusButton.addEventListener("click", () => {
+
+            navigateTo("daily");
+
+        });
+
+    }
+
+}
 
 
-// Pillar card navigation
-const pillarCards = document.querySelectorAll(".pillar-card");
+/* ==========================================
+   7. DISPLAY CURRENT DATE
+========================================== */
 
-pillarCards.forEach(card => {
+function updateDate() {
 
-    card.addEventListener("click", () => {
+    const dateElement = document.getElementById(
+        "current-date"
+    );
 
-        const pillar = card.dataset.pillar;
+    if (!dateElement) return;
 
-        console.log("Opening pillar:", pillar);
+    const today = new Date();
 
-        const matchingNav = document.querySelector(
-            `.nav-item[data-page="${pillar}"]`
-        );
-
-        if (matchingNav) {
-            matchingNav.click();
+    dateElement.textContent = today.toLocaleDateString(
+        "en-US",
+        {
+            weekday: "short",
+            month: "short",
+            day: "numeric",
+            year: "numeric"
         }
+    );
 
-    });
-
-});
+}
 
 
-// Today's focus button
-const focusButton = document.getElementById("focus-button");
+/* ==========================================
+   8. START VERDE
+========================================== */
 
-focusButton.addEventListener("click", () => {
+updateDate();
 
-    alert("Your next adventure is waiting! 🌿");
+attachHomeEvents();
 
-});
+console.log("🌿 VERDE initialized successfully!");
 
-console.log("VERDE application initialized successfully.");

@@ -632,3 +632,208 @@ footer {
         display: none;
     }
 }
+
+
+/* =================================
+   VERDE — WORKSPACE PAGES
+================================= */
+
+.page-header {
+    padding: 42px 0 28px;
+}
+
+.page-header .eyebrow {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.page-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    color: #443C4E;
+    margin-bottom: 9px;
+}
+
+.page-header p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 13px;
+}
+
+.workspace-banner {
+    padding: 28px;
+    border-radius: 16px;
+    margin-bottom: 28px;
+}
+
+.workspace-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin: 12px 0 7px;
+    color: #443C4E;
+}
+
+.workspace-banner p {
+    color: #817C87;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.workspace-banner.purple {
+    background: linear-gradient(120deg, #EAE2F2, #F3EDF6);
+}
+
+.workspace-banner.green {
+    background: linear-gradient(120deg, #E4EDE0, #EEF1E8);
+}
+
+.workspace-section {
+    margin: 30px 0;
+}
+
+.workspace-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    margin-bottom: 16px;
+    color: #443C4E;
+}
+
+.workspace-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.workspace-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.workspace-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin: 9px 0;
+}
+
+.workspace-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.workspace-icon {
+    font-size: 24px;
+}
+
+.workspace-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.workspace-list-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 15px 17px;
+    border-radius: 11px;
+}
+
+.workspace-list-item .item-icon {
+    font-size: 19px;
+}
+
+.workspace-list-item strong {
+    font-size: 13px;
+}
+
+.workspace-list-item p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.workspace-note {
+    background: #F0EAF5;
+    padding: 20px;
+    border-radius: 13px;
+    color: #675777;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+.workspace-note.green-note {
+    background: #E9EFE5;
+    color: #536C52;
+}
+
+.milestone-list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.milestone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.milestone-number {
+    background: var(--lavender);
+    color: var(--deep-purple);
+    width: 29px;
+    height: 29px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.energy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.energy-card {
+    padding: 19px;
+    border-radius: 13px;
+    background: white;
+    border: 1px solid var(--border);
+}
+
+.energy-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    margin: 8px 0;
+}
+
+.energy-card p {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+    .workspace-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .energy-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
