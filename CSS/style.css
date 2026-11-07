@@ -3391,3 +3391,487 @@ footer {
         padding: 19px;
     }
 }
+
+
+/* =========================================
+   VERDE — ADVANCE / INTERNSHIP TRACKER
+========================================= */
+
+.advance-studio {
+    width: 100%;
+    max-width: 1100px;
+    margin: 28px auto 0;
+    box-sizing: border-box;
+}
+
+.advance-welcome {
+    background: linear-gradient(120deg, #F0EBF5, #F5F0F6);
+    border: 1px solid #E8DFEF;
+    border-radius: 18px;
+    padding: 28px 32px;
+    margin-bottom: 30px;
+}
+
+.advance-welcome h3 {
+    color: #51445F;
+    font-family: Georgia, serif;
+    font-size: 27px;
+    margin: 9px 0;
+}
+
+.advance-welcome p {
+    color: #898391;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 0;
+}
+
+.advance-tracker {
+    width: 100%;
+}
+
+.advance-tracker-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 26px;
+}
+
+.advance-tracker-heading h2,
+.advance-form-heading h2 {
+    color: #405342;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    margin: 8px 0;
+}
+
+.advance-tracker-heading p,
+.advance-form-heading p {
+    color: #96919E;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.advance-add-button {
+    background: #617B60;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 15px 23px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s ease;
+    white-space: nowrap;
+}
+
+.advance-add-button:hover {
+    background: #50694F;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(65, 85, 62, .13);
+}
+
+/* STATISTICS */
+
+.advance-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.advance-stat-card {
+    background: #EDF2E9;
+    border: 1px solid #DFE8DA;
+    border-radius: 17px;
+    padding: 22px;
+}
+
+.advance-stat-card span {
+    display: block;
+    color: #506A51;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.advance-stat-card p {
+    color: #82907B;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* SEARCH AND FILTERS */
+
+.advance-toolbar {
+    margin-bottom: 24px;
+}
+
+#advance-search {
+    width: 100%;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #E7E3E0;
+    border-radius: 15px;
+    padding: 17px 20px;
+    color: #514A55;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: .2s ease;
+}
+
+#advance-search:focus {
+    border-color: #A9B99F;
+    box-shadow: 0 0 0 3px rgba(169, 185, 159, .15);
+}
+
+.advance-filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.advance-filter-button {
+    background: white;
+    color: #918A96;
+    border: 1px solid #E8E4E2;
+    border-radius: 30px;
+    padding: 10px 17px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.advance-filter-button:hover {
+    border-color: #B7C7AE;
+    color: #536C53;
+}
+
+.advance-filter-button.active {
+    background: #EAF0E6;
+    color: #526D53;
+    border-color: #C9D8C1;
+    font-weight: 700;
+}
+
+/* INTERNSHIP CARDS */
+
+.advance-internship-list {
+    display: grid;
+    gap: 15px;
+}
+
+.advance-internship-card {
+    background: #FFFFFF;
+    border: 1px solid #EAE6E2;
+    border-radius: 17px;
+    padding: 23px 25px;
+    transition: .2s ease;
+}
+
+.advance-internship-card:hover {
+    border-color: #D5DFD0;
+    box-shadow: 0 7px 22px rgba(67, 78, 62, .06);
+    transform: translateY(-2px);
+}
+
+.advance-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.advance-card-title h3 {
+    color: #4B5D4B;
+    font-family: Georgia, serif;
+    font-size: 21px;
+    margin: 0 0 6px;
+}
+
+.advance-card-title p {
+    color: #96909B;
+    font-size: 14px;
+    margin: 0;
+}
+
+.advance-status {
+    display: inline-block;
+    border-radius: 30px;
+    padding: 7px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    background: #F0EDF4;
+    color: #76658B;
+}
+
+.advance-status.applied {
+    background: #EAF1E7;
+    color: #587454;
+}
+
+.advance-status.interviewing {
+    background: #F8F0DE;
+    color: #9A793C;
+}
+
+.advance-status.offer {
+    background: #E4F1E7;
+    color: #47784F;
+}
+
+.advance-status.rejected,
+.advance-status.withdrawn {
+    background: #F5EAEA;
+    color: #A16D6D;
+}
+
+.advance-card-details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    color: #898591;
+    font-size: 13px;
+}
+
+.advance-progress {
+    background: #F3F0F5;
+    color: #7D7189;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 11px;
+}
+
+.advance-card-notes {
+    color: #85808B;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 16px 0 0;
+    white-space: pre-wrap;
+}
+
+.advance-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid #F0EDEB;
+    margin-top: 18px;
+    padding-top: 15px;
+}
+
+.advance-card-actions button {
+    background: none;
+    border: none;
+    color: #8C8295;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.advance-card-actions button:hover {
+    color: #526D53;
+}
+
+.advance-application-link {
+    color: #617B60;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-right: auto;
+}
+
+.advance-application-link:hover {
+    text-decoration: underline;
+}
+
+/* EMPTY STATE */
+
+.advance-empty-state {
+    background: #F4F5F0;
+    border-radius: 18px;
+    padding: 65px 25px;
+    text-align: center;
+}
+
+.advance-empty-state > span {
+    display: block;
+    font-size: 43px;
+    margin-bottom: 16px;
+}
+
+.advance-empty-state h3 {
+    color: #52634E;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    margin: 0 0 10px;
+}
+
+.advance-empty-state p {
+    color: #96909B;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto 23px;
+}
+
+/* ADD / EDIT FORM */
+
+.advance-form-page {
+    background: #FFFFFF;
+    border: 1px solid #EAE6E2;
+    border-radius: 18px;
+    padding: 30px;
+}
+
+.advance-back-button {
+    background: none;
+    border: none;
+    color: #71836B;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 27px;
+}
+
+.advance-back-button:hover {
+    color: #455A45;
+}
+
+.advance-form-heading {
+    margin-bottom: 27px;
+}
+
+#advance-internship-form {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+#advance-internship-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #62596B;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.advance-form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+}
+
+#advance-internship-form input,
+#advance-internship-form select,
+#advance-internship-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: #FBFAF9;
+    border: 1px solid #E8E3E6;
+    border-radius: 11px;
+    padding: 13px 14px;
+    color: #514A55;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    outline: none;
+    transition: .2s ease;
+}
+
+#advance-internship-form input:focus,
+#advance-internship-form select:focus,
+#advance-internship-form textarea:focus {
+    border-color: #A9B99F;
+    box-shadow: 0 0 0 3px rgba(169, 185, 159, .13);
+}
+
+#advance-internship-form textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
+.advance-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.advance-cancel-button {
+    background: #F3F0F4;
+    color: #7D7189;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .advance-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .advance-tracker-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .advance-tracker-heading h2,
+    .advance-form-heading h2 {
+        font-size: 28px;
+    }
+
+    .advance-stats {
+        gap: 10px;
+    }
+
+    .advance-stat-card {
+        padding: 16px;
+    }
+
+    .advance-filter-tabs {
+        gap: 7px;
+    }
+
+    .advance-filter-button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .advance-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .advance-form-page {
+        padding: 20px;
+    }
+
+    .advance-card-title {
+        flex-direction: column;
+    }
+
+    .advance-card-actions {
+        flex-wrap: wrap;
+    }
+}

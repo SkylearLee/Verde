@@ -446,59 +446,36 @@ create: {
     // ADVANCE
 
     advance: {
+    eyebrow: "PILLAR 04 · GROW & DEVELOP",
+    title: "Advance 🚀",
+    description: "Build toward the future you're excited about.",
 
-        eyebrow: "PILLAR 04 · GROW & DEVELOP",
-        title: "Advance 🚀",
-        description: "Build toward the future you're excited about.",
+    content: `
+        <div class="workspace-banner purple">
+            <span class="section-eyebrow">PROFESSIONAL DEVELOPMENT</span>
+            <h3>Your future is something you build.</h3>
+            <p>
+                Keep track of opportunities, organize your applications,
+                and take meaningful steps toward your career.
+            </p>
+        </div>
 
-        content: `
-
-            <div class="workspace-banner purple">
-                <span class="section-eyebrow">PROFESSIONAL DEVELOPMENT</span>
-                <h3>Your future is something you build.</h3>
-                <p>
-                    Develop your professional presence and explore
-                    opportunities that align with your interests.
-                </p>
-            </div>
-
-            <div class="workspace-grid">
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">🌐</span>
-                    <h4>Personal website</h4>
+        <div id="advance-studio-root" class="advance-studio">
+            <div class="advance-welcome">
+                <div>
+                    <span class="section-eyebrow">YOUR CAREER JOURNEY</span>
+                    <h3>Opportunities worth pursuing.</h3>
                     <p>
-                        Build your online portfolio, showcase projects,
-                        research interests, experience, and skills.
+                        Keep all your internship opportunities in one place.
+                        Track deadlines, application progress, and next steps.
                     </p>
                 </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">💼</span>
-                    <h4>Internship applications</h4>
-                    <p>Research and apply to Summer 2027 opportunities.</p>
-                </div>
-
             </div>
 
-            <section class="workspace-section">
-                <h3>November objectives</h3>
-
-                <div class="milestone-list">
-
-                    ${createMilestones([
-                        "Plan personal website structure",
-                        "Build the website",
-                        "Add resume and experience",
-                        "Find relevant internships",
-                        "Submit 3–5 thoughtful applications"
-                    ])}
-
-                </div>
-            </section>
-
-        `
-    },
+            <section id="advance-applications-view"></section>
+        </div>
+    `
+},
 
 
     // LIVE
