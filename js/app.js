@@ -300,58 +300,25 @@ build: {
 
     // CREATE
 
-    create: {
+    
+ideas: {
+    eyebrow: "YOUR PERSONAL IDEA COLLECTION",
+    title: "Idea Vault ✧",
+    description: "A home for every random thought worth keeping.",
+    content: `
+        <div id="idea-vault-root"></div>
+    `
+},
 
-        eyebrow: "PILLAR 02 · EXPRESS & IMAGINE",
-        title: "Create 🎨",
-        description: "Make room for your creative side.",
+create: {
+    eyebrow: "MAKE SOMETHING JUST BECAUSE",
+    title: "Creative Studio",
+    description: "A little space to write, reflect, experiment, and make things.",
+    content: `
+        <div id="create-studio-root"></div>
+    `
+},
 
-        content: `
-
-            <div class="workspace-banner purple">
-                <span class="section-eyebrow">YOUR CREATIVE SPACE</span>
-                <h3>Make things simply because you can.</h3>
-                <p>
-                    No deadlines, no quotas, no pressure.
-                    Just a place for your imagination.
-                </p>
-            </div>
-
-            <div class="workspace-grid">
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">✍️</span>
-                    <h4>Book writing</h4>
-                    <p>Continue your manuscript whenever inspiration strikes.</p>
-                </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">📓</span>
-                    <h4>Journaling</h4>
-                    <p>Thoughts, reflections, and random observations.</p>
-                </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">🖌️</span>
-                    <h4>Art & drawing</h4>
-                    <p>Sketching, painting, and experimenting with crafts.</p>
-                </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">💡</span>
-                    <h4>Creative experiments</h4>
-                    <p>Try something new without worrying about the outcome.</p>
-                </div>
-
-            </div>
-
-            <div class="workspace-note">
-                ♡ You don't have to create something every week.
-                This space is here whenever you need it.
-            </div>
-
-        `
-    },
 
 
     // LEARN
@@ -526,18 +493,16 @@ build: {
 
     // IDEA VAULT
 
+    
     ideas: {
-    title: "Idea Vault",
-    content: `
-        <section class="page-intro">
-            <span class="eyebrow">YOUR PERSONAL THINKING SPACE</span>
-            <h2>Idea Vault</h2>
-            <p>A home for the thoughts, plans, and little sparks of inspiration you don't want to lose.</p>
-        </section>
+        eyebrow: "YOUR PERSONAL IDEA COLLECTION",
+        title: "Idea Vault ✧",
+        description: "A home for every random thought worth keeping.",
+        content: `
+            <div id="idea-vault-root"></div>
+        `
+    },
 
-        <div id="idea-vault-root"></div>
-    `
-},
 
 
     // RESOURCES
