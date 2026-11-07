@@ -527,34 +527,17 @@ build: {
     // IDEA VAULT
 
     ideas: {
+    title: "Idea Vault",
+    content: `
+        <section class="page-intro">
+            <span class="eyebrow">YOUR PERSONAL THINKING SPACE</span>
+            <h2>Idea Vault</h2>
+            <p>A home for the thoughts, plans, and little sparks of inspiration you don't want to lose.</p>
+        </section>
 
-        eyebrow: "YOUR PERSONAL IDEA COLLECTION",
-        title: "Idea Vault ✧",
-        description: "A home for every random thought worth keeping.",
-
-        content: `
-
-            <div class="workspace-banner purple">
-                <span class="section-eyebrow">CATCH THE THOUGHT</span>
-                <h3>Never lose a good idea again.</h3>
-                <p>
-                    A home for random ideas, unfinished concepts,
-                    inventions, projects, and things you want to explore.
-                </p>
-            </div>
-
-            <div class="workspace-card">
-                <span class="workspace-icon">💭</span>
-                <h4>Your idea collection is coming soon.</h4>
-                <p>
-                    We're going to build individual idea pages with titles,
-                    notes, categories, tags, and the ability to turn an
-                    idea into a project.
-                </p>
-            </div>
-
-        `
-    },
+        <div id="idea-vault-root"></div>
+    `
+},
 
 
     // RESOURCES
