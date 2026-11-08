@@ -489,58 +489,6 @@ create: {
         `
     },
 
-
-
-    // RESOURCES
-
-    resources: {
-
-        eyebrow: "YOUR PERSONAL LIBRARY",
-        title: "Resources ♡",
-        description: "Keep the things you want to revisit close.",
-
-        content: `
-
-            <div class="workspace-banner green">
-                <span class="section-eyebrow">SAVE FOR LATER</span>
-                <h3>A collection of things worth exploring.</h3>
-                <p>
-                    Books, tutorials, articles, research papers,
-                    videos, and inspiration.
-                </p>
-            </div>
-
-            <div class="workspace-grid">
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">📖</span>
-                    <h4>Books & reading</h4>
-                    <p>Fiction, nonfiction, and books to explore.</p>
-                </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">🔬</span>
-                    <h4>Research & articles</h4>
-                    <p>Scientific papers and interesting discoveries.</p>
-                </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">🎓</span>
-                    <h4>Courses & tutorials</h4>
-                    <p>Learning resources and educational material.</p>
-                </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">✨</span>
-                    <h4>Inspiration</h4>
-                    <p>Websites, designs, projects, and ideas.</p>
-                </div>
-
-            </div>
-
-        `
-    }
-
 };
 
 
