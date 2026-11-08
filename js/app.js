@@ -480,12 +480,22 @@ create: {
     // IDEA VAULT
 
     
-    ideas: {
+        ideas: {
         eyebrow: "YOUR PERSONAL IDEA COLLECTION",
         title: "Idea Vault ✧",
         description: "A home for every random thought worth keeping.",
         content: `
             <div id="idea-vault-root"></div>
+        `
+    },
+
+    // SETTINGS
+    settings: {
+        eyebrow: "MAKE VERDE YOUR OWN",
+        title: "Settings ⚙",
+        description: "A little space to personalize your universe.",
+        content: `
+            <div id="settings-root"></div>
         `
     },
 

@@ -20,8 +20,11 @@
     --border: #ECE9E5;
 
     --shadow: 0 5px 25px rgba(65, 60, 75, 0.045);
-}
 
+    /* Customizable theme settings */
+    --accent: var(--purple);
+    --accent-light: var(--lavender);
+}
 * {
     margin: 0;
     padding: 0;
