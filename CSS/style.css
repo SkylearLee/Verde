@@ -4946,3 +4946,119 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ==========================================
+   WORKSPACE CUSTOMIZATION
+========================================== */
+
+.settings-workspace-panel {
+    grid-column: 1 / -1;
+}
+
+.workspace-customization-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 22px;
+}
+
+.workspace-customization-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(130px, 180px);
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.workspace-feature-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.workspace-feature-info strong {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.workspace-feature-info small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.workspace-label-input {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--cream);
+    color: var(--text);
+    font: inherit;
+    font-size: 12px;
+    outline: none;
+}
+
+.workspace-label-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.workspace-toggle {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 23px;
+    cursor: pointer;
+}
+
+.workspace-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.workspace-toggle span {
+    position: absolute;
+    inset: 0;
+    background: var(--border);
+    border-radius: 30px;
+    transition: 0.2s ease;
+}
+
+.workspace-toggle span::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.2s ease;
+}
+
+.workspace-toggle input:checked + span {
+    background: var(--accent);
+}
+
+.workspace-toggle input:checked + span::before {
+    transform: translateX(19px);
+}
+
+.workspace-toggle input:focus-visible + span {
+    outline: 3px solid var(--accent-light);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .workspace-customization-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+    }
+
+    .workspace-label-input {
+        grid-column: 1 / -1;
+    }
+}

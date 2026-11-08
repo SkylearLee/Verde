@@ -5,12 +5,24 @@
 
 const SETTINGS_KEY = "verde_settings_v1";
 
+
 const defaultSettings = {
     name: "",
     greeting: "Good morning",
     description: "A little progress, a little curiosity, a lot of living.",
-    theme: "lavender"
+    theme: "lavender",
+
+    workspace: {
+        daily: { visible: true, label: "Daily Focus" },
+        ideas: { visible: true, label: "Idea Vault" },
+        build: { visible: true, label: "Build" },
+        create: { visible: true, label: "Create" },
+        learn: { visible: true, label: "Learn" },
+        advance: { visible: true, label: "Advance" },
+        live: { visible: true, label: "Live" }
+    }
 };
+
 
 const themePresets = {
     lavender: {
@@ -38,14 +50,22 @@ const themePresets = {
 function getVerdeSettings() {
     try {
         const saved = localStorage.getItem(SETTINGS_KEY);
-        return saved
-            ? { ...defaultSettings, ...JSON.parse(saved) }
-            : { ...defaultSettings };
+        const parsed = saved ? JSON.parse(saved) : {};
+
+        return {
+            ...defaultSettings,
+            ...parsed,
+            workspace: {
+                ...defaultSettings.workspace,
+                ...(parsed.workspace || {})
+            }
+        };
     } catch (error) {
         console.warn("Could not load VERDE settings:", error);
         return { ...defaultSettings };
     }
 }
+
 
 function saveVerdeSettings(settings) {
     localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
@@ -82,6 +102,8 @@ function applyVerdeSettings() {
             ? settings.name.charAt(0).toUpperCase()
             : "S";
     }
+
+    applyWorkspaceSettings();
 }
 
 /* ==========================================
@@ -191,6 +213,122 @@ function initializeSettings() {
                 </p>
             </section>
 
+
+            <section class="panel settings-panel settings-workspace-panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="eyebrow">SHAPE YOUR SPACE</span>
+                        <h3>Your Workspace 🌱</h3>
+                    </div>
+                    <span class="panel-icon">⌘</span>
+                </div>
+
+                <p class="settings-intro">
+                    Choose which spaces appear in your sidebar and give them names
+                    that feel right to you.
+                </p>
+
+                <div class="workspace-customization-list">
+
+                    <div class="workspace-customization-row">
+                        <div class="workspace-feature-info">
+                            <strong>Daily Focus</strong>
+                            <small>Your daily intentions and energy</small>
+                        </div>
+                        <label class="workspace-toggle">
+                            <input type="checkbox" data-workspace-toggle="daily" checked>
+                            <span></span>
+                        </label>
+                        <input class="workspace-label-input" data-workspace-label="daily"
+                            value="Daily Focus" aria-label="Daily Focus navigation label">
+                    </div>
+
+                    <div class="workspace-customization-row">
+                        <div class="workspace-feature-info">
+                            <strong>Idea Vault</strong>
+                            <small>Your saved ideas and thoughts</small>
+                        </div>
+                        <label class="workspace-toggle">
+                            <input type="checkbox" data-workspace-toggle="ideas" checked>
+                            <span></span>
+                        </label>
+                        <input class="workspace-label-input" data-workspace-label="ideas"
+                            value="Idea Vault" aria-label="Idea Vault navigation label">
+                    </div>
+
+                    <div class="workspace-customization-row">
+                        <div class="workspace-feature-info">
+                            <strong>Build</strong>
+                            <small>Projects and experiments</small>
+                        </div>
+                        <label class="workspace-toggle">
+                            <input type="checkbox" data-workspace-toggle="build" checked>
+                            <span></span>
+                        </label>
+                        <input class="workspace-label-input" data-workspace-label="build"
+                            value="Build" aria-label="Build navigation label">
+                    </div>
+
+                    <div class="workspace-customization-row">
+                        <div class="workspace-feature-info">
+                            <strong>Create</strong>
+                            <small>Journaling and creative projects</small>
+                        </div>
+                        <label class="workspace-toggle">
+                            <input type="checkbox" data-workspace-toggle="create" checked>
+                            <span></span>
+                        </label>
+                        <input class="workspace-label-input" data-workspace-label="create"
+                            value="Create" aria-label="Create navigation label">
+                    </div>
+
+                    <div class="workspace-customization-row">
+                        <div class="workspace-feature-info">
+                            <strong>Learn</strong>
+                            <small>Your research library</small>
+                        </div>
+                        <label class="workspace-toggle">
+                            <input type="checkbox" data-workspace-toggle="learn" checked>
+                            <span></span>
+                        </label>
+                        <input class="workspace-label-input" data-workspace-label="learn"
+                            value="Learn" aria-label="Learn navigation label">
+                    </div>
+
+                    <div class="workspace-customization-row">
+                        <div class="workspace-feature-info">
+                            <strong>Advance</strong>
+                            <small>Applications and opportunities</small>
+                        </div>
+                        <label class="workspace-toggle">
+                            <input type="checkbox" data-workspace-toggle="advance" checked>
+                            <span></span>
+                        </label>
+                        <input class="workspace-label-input" data-workspace-label="advance"
+                            value="Advance" aria-label="Advance navigation label">
+                    </div>
+
+                    <div class="workspace-customization-row">
+                        <div class="workspace-feature-info">
+                            <strong>Live</strong>
+                            <small>Activities and everyday experiences</small>
+                        </div>
+                        <label class="workspace-toggle">
+                            <input type="checkbox" data-workspace-toggle="live" checked>
+                            <span></span>
+                        </label>
+                        <input class="workspace-label-input" data-workspace-label="live"
+                            value="Live" aria-label="Live navigation label">
+                    </div>
+
+                </div>
+
+                <p class="settings-note">
+                    Home and Settings will always remain available.
+                </p>
+            </section>
+
+
             <div class="settings-save-message" id="settings-save-message">
                 Your changes are saved automatically ♡
             </div>
@@ -229,6 +367,40 @@ function initializeSettings() {
             updateThemeSelection(updatedSettings.theme);
         });
     });
+
+
+    // Restore saved Workspace preferences.
+    const workspaceSettings = getVerdeSettings().workspace;
+
+    root.querySelectorAll("[data-workspace-toggle]").forEach(input => {
+        const page = input.dataset.workspaceToggle;
+        input.checked = workspaceSettings[page]?.visible !== false;
+
+        input.addEventListener("change", () => {
+            const updatedSettings = getVerdeSettings();
+            updatedSettings.workspace[page].visible = input.checked;
+
+            saveVerdeSettings(updatedSettings);
+            applyWorkspaceSettings();
+        });
+    });
+
+    root.querySelectorAll("[data-workspace-label]").forEach(input => {
+        const page = input.dataset.workspaceLabel;
+        input.value = workspaceSettings[page]?.label || input.value;
+
+        input.addEventListener("input", () => {
+            const updatedSettings = getVerdeSettings();
+            updatedSettings.workspace[page].label = input.value.trim() || page;
+
+            saveVerdeSettings(updatedSettings);
+            applyWorkspaceSettings();
+        });
+    });
+
+    applyWorkspaceSettings();
+
+
 }
 
 function saveProfileFromForm() {
@@ -283,3 +455,33 @@ document.addEventListener("verde:pagechange", event => {
 document.addEventListener("DOMContentLoaded", () => {
     applyVerdeSettings();
 });
+
+
+/* ==========================================
+   WORKSPACE CUSTOMIZATION
+========================================== */
+
+function applyWorkspaceSettings() {
+    const settings = getVerdeSettings().workspace;
+
+    Object.entries(settings).forEach(([page, options]) => {
+        const navItem = document.querySelector(
+            `.nav-item[data-page="${page}"]`
+        );
+
+        if (!navItem) return;
+
+        // Show or hide the navigation item.
+        navItem.style.display = options.visible === false ? "none" : "";
+
+        // Update its visible label without replacing its icon.
+        const labelNode = Array.from(navItem.childNodes).find(
+            node => node.nodeType === Node.TEXT_NODE
+        );
+
+        if (labelNode) {
+            labelNode.textContent = ` ${options.label || page}`;
+        }
+    });
+}
+
