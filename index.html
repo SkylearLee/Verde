@@ -20,6 +20,8 @@
     <script src="js/advance.js" defer></script>
     <script src="js/live.js" defer></script>
     <script src="js/daily.js" defer></script>
+    <script src="js/garden.js" defer></script>
+
 </head>
 
 <body>
@@ -197,48 +199,56 @@
 
 
             <!-- BOTTOM DASHBOARD -->
-            <section class="bottom-grid">
+            <section class="bottom-grid garden-bottom-grid">
 
-                <div class="panel">
-                    <div class="panel-heading">
-                        <div>
-                            <span class="eyebrow">IN PROGRESS</span>
-                            <h3>Current projects</h3>
-                        </div>
-                        <span class="panel-icon">✧</span>
-                    </div>
+    <div class="panel garden-streak-panel garden-expanded">
 
-                    <div class="project-item">
-                        <div class="project-icon">📷</div>
-                        <div class="project-details">
-                            <h4>Computer Vision Camera</h4>
-                            <p>BUILD · Personal Project</p>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="width: 10%"></div>
-                            </div>
-                        </div>
-                        <span class="project-percent">10%</span>
-                    </div>
+        <div class="panel-heading">
+            <div>
+                <span class="eyebrow">YOUR LITTLE CORNER</span>
+                <h3>Your VERDE Garden 🌱</h3>
+            </div>
+            <span class="panel-icon">✿</span>
+        </div>
 
-                </div>
+        <div class="garden-streak-summary">
+            <div class="garden-streak-number">
+                <span id="garden-streak-count">0</span>
+                <span>day streak</span>
+            </div>
+            <p id="garden-streak-message">
+                Every visit is a little way of showing up for yourself.
+            </p>
+        </div>
 
+        <div class="garden-milestone" id="garden-milestone">
+            <span class="garden-milestone-icon" id="garden-milestone-icon">🌱</span>
+            <div class="garden-milestone-info">
+                <span class="garden-milestone-label" id="garden-milestone-label">
+                    YOUR NEXT MILESTONE
+                </span>
+                <strong id="garden-milestone-title">Little Sprout</strong>
+                <span id="garden-milestone-progress">3 days to grow your first sprout</span>
+            </div>
+        </div>
 
-                <div class="panel inspiration-panel">
-                    <div class="panel-heading">
-                        <div>
-                            <span class="eyebrow">A LITTLE REMINDER</span>
-                            <h3>Take your time.</h3>
-                        </div>
-                    </div>
+        <div class="garden-calendar-heading">
+            <span id="garden-calendar-month"></span>
+            <span>YOUR VISITS</span>
+        </div>
 
-                    <div class="inspiration-quote">
-                        "You don't have to do everything today. You just have to make room for the things that matter."
-                    </div>
+        <div id="garden-calendar" class="garden-calendar"></div>
 
-                    <span class="quote-decoration">✿</span>
-                </div>
+        <div class="garden-streak-footer">
+            <span id="garden-streak-status">Your garden is waiting for you ♡</span>
+            <button type="button" id="garden-checkin-button">
+                ✿ Check in today
+            </button>
+        </div>
 
-            </section>
+    </div>
+
+</section>
 
 
             <footer>

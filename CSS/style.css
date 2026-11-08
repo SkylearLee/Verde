@@ -4524,3 +4524,282 @@ footer {
     }
 }
 
+
+/* =========================================
+   VERDE — GARDEN STREAK TRACKER
+========================================= */
+
+.garden-streak-panel {
+    background: linear-gradient(145deg, #F6F5EF, #F0F3EA);
+    border: 1px solid #E4E9DD;
+}
+
+.garden-streak-summary {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 22px 0;
+}
+
+.garden-streak-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 82px;
+    min-height: 82px;
+    background: #E5EDDF;
+    border-radius: 50%;
+    color: #607A5D;
+}
+
+.garden-streak-number span:first-child {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    line-height: 1.1;
+}
+
+.garden-streak-number span:last-child {
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+.garden-streak-summary p {
+    color: #879080;
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 210px;
+}
+
+.garden-calendar-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #829078;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 22px 0 12px;
+}
+
+.garden-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.garden-weekday {
+    color: #A2A798;
+    font-size: 11px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.garden-day {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    min-width: 0;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .65);
+    color: #8D9586;
+    font-size: 12px;
+}
+
+.garden-day.empty {
+    background: transparent;
+}
+
+.garden-day.today {
+    outline: 1.5px solid #91A985;
+    outline-offset: 1px;
+}
+
+.garden-day.visited {
+    background: #DFEBDD;
+    color: #54734F;
+    font-weight: 700;
+}
+
+.garden-flower {
+    position: absolute;
+    top: -4px;
+    right: -2px;
+    color: #9B82B2;
+    font-size: 12px;
+}
+
+.garden-streak-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid #E2E8DC;
+    margin-top: 20px;
+    padding-top: 17px;
+}
+
+.garden-streak-footer > span {
+    color: #84917C;
+    font-size: 12px;
+}
+
+.garden-streak-footer button {
+    background: #71896B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 25px;
+    padding: 11px 17px;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.garden-streak-footer button:hover:not(:disabled) {
+    background: #5D7658;
+    transform: translateY(-1px);
+}
+
+.garden-streak-footer button:disabled {
+    background: #DCE8D7;
+    color: #627A5D;
+    cursor: default;
+}
+
+@media (max-width: 650px) {
+    .garden-streak-summary {
+        align-items: flex-start;
+    }
+
+    .garden-calendar {
+        gap: 4px;
+    }
+
+    .garden-day {
+        border-radius: 7px;
+    }
+}
+
+/* =========================================
+   VERDE — GARDEN MILESTONES
+========================================= */
+
+.garden-milestone {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 17px;
+    margin: 18px 0;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid #E4E9DD;
+    border-radius: 14px;
+}
+
+.garden-milestone-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    background: #F0F2E9;
+    border-radius: 50%;
+    font-size: 25px;
+}
+
+.garden-milestone-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.garden-milestone-label {
+    color: #9A9F8E;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.garden-milestone-info strong {
+    color: #637A5D;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.garden-milestone-progress {
+    color: #969B8E;
+    font-size: 11px;
+}
+
+/* =========================================
+   VERDE — EXPANDED GARDEN LAYOUT
+========================================= */
+
+.garden-bottom-grid {
+    display: block;
+    width: 100%;
+}
+
+.garden-expanded {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+/* Give the streak summary more breathing room */
+.garden-expanded .garden-streak-summary {
+    margin: 28px 0;
+    gap: 24px;
+}
+
+.garden-expanded .garden-streak-number {
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.garden-expanded .garden-streak-number span:first-child {
+    font-size: 36px;
+}
+
+.garden-expanded .garden-streak-summary p {
+    max-width: 360px;
+    font-size: 14px;
+}
+
+/* Milestone gets a little more room */
+.garden-expanded .garden-milestone {
+    max-width: 500px;
+    padding: 18px 22px;
+    margin: 24px 0;
+}
+
+/* More spacious monthly calendar */
+.garden-expanded .garden-calendar-heading {
+    margin-top: 30px;
+}
+
+.garden-expanded .garden-calendar {
+    gap: 10px;
+}
+
+.garden-expanded .garden-day {
+    min-height: 42px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+.garden-expanded .garden-weekday {
+    padding: 10px 0;
+    font-size: 12px;
+}
+
+/* Footer */
+.garden-expanded .garden-streak-footer {
+    margin-top: 26px;
+    padding-top: 22px;
+}
