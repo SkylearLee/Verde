@@ -92,56 +92,55 @@ const pages = {
 
     // DAILY FOCUS
 
-    daily: {
+    
+daily: {
+    eyebrow: "YOUR DAILY SPACE",
+    title: "Daily Focus ☀",
+    description: "A little intention goes a long way.",
 
-        eyebrow: "YOUR DAILY SPACE",
-        title: "Daily Focus ☀",
-        description: "A little intention goes a long way.",
+    content: `
+        <div class="workspace-banner purple">
+            <span class="section-eyebrow">TODAY IS YOURS</span>
+            <h3>What kind of day are we having?</h3>
+            <p>Choose your energy level. There's no wrong answer.</p>
+        </div>
 
-        content: `
+        <section class="workspace-section daily-energy-section">
+            <h3>Choose your energy</h3>
 
-            <div class="workspace-banner purple">
-                <span class="section-eyebrow">TODAY IS YOURS</span>
-                <h3>What kind of day are we having?</h3>
-                <p>Choose your energy level. There's no wrong answer.</p>
+            <div class="energy-grid">
+
+                <button class="energy-card" data-energy="low">
+                    <span>🌙</span>
+                    <h4>Low energy</h4>
+                    <p>Take it easy. Read, journal, organize, or rest.</p>
+                </button>
+
+                <button class="energy-card" data-energy="normal">
+                    <span>☀️</span>
+                    <h4>Normal energy</h4>
+                    <p>Choose one project and spend some focused time on it.</p>
+                </button>
+
+                <button class="energy-card" data-energy="high">
+                    <span>⚡</span>
+                    <h4>High energy</h4>
+                    <p>Experiment, explore, and make progress on multiple things.</p>
+                </button>
+
             </div>
+        </section>
 
-            <section class="workspace-section">
-                <h3>Choose your energy</h3>
+        <section id="daily-suggestions-section" class="workspace-section" hidden>
+            <div id="daily-suggestions-root"></div>
+        </section>
 
-                <div class="energy-grid">
+        <section id="daily-intentions-section" class="workspace-section" hidden>
+            <div id="daily-intentions-root"></div>
+        </section>
+    `
+},
 
-                    <div class="energy-card">
-                        <span>🌙</span>
-                        <h4>Low energy</h4>
-                        <p>Take it easy. Read, journal, organize, or rest.</p>
-                    </div>
-
-                    <div class="energy-card">
-                        <span>☀️</span>
-                        <h4>Normal energy</h4>
-                        <p>Choose one project and spend some focused time on it.</p>
-                    </div>
-
-                    <div class="energy-card">
-                        <span>⚡</span>
-                        <h4>High energy</h4>
-                        <p>Experiment, explore, and make progress on multiple things.</p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section class="workspace-section">
-                <h3>Today's intentions</h3>
-
-                <div class="workspace-card">
-                    <p>Your interactive daily task manager is coming soon!</p>
-                </div>
-            </section>
-
-        `
-    },
 
 
     // WEEKLY OVERVIEW
