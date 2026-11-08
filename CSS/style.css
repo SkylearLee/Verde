@@ -4806,3 +4806,143 @@ footer {
     margin-top: 26px;
     padding-top: 22px;
 }
+
+
+/* ==========================================
+   SETTINGS PAGE
+========================================== */
+
+.settings-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.settings-panel {
+    padding: 26px;
+    min-width: 0;
+}
+
+.settings-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 23px;
+}
+
+.settings-field label {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.settings-field input,
+.settings-field select,
+.settings-field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--cream);
+    color: var(--text);
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.settings-field textarea {
+    resize: vertical;
+    min-height: 85px;
+}
+
+.settings-field input:focus,
+.settings-field select:focus,
+.settings-field textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.settings-field small {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.settings-intro {
+    color: var(--muted);
+    margin-top: 22px;
+    line-height: 1.6;
+}
+
+.theme-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+    margin-top: 22px;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--white);
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s ease;
+}
+
+.theme-option:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.theme-option.selected {
+    border: 2px solid var(--accent);
+    background: var(--accent-light);
+}
+
+.theme-option > span:last-child {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.theme-swatches {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.theme-swatches i {
+    display: block;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.theme-swatches i + i {
+    margin-left: -7px;
+}
+
+.settings-note {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 20px;
+}
+
+.settings-save-message {
+    grid-column: 1 / -1;
+    color: var(--sage);
+    font-size: 12px;
+    text-align: right;
+}
+
+@media (max-width: 800px) {
+    .settings-layout {
+        grid-template-columns: 1fr;
+    }
+}
