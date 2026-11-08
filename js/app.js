@@ -141,51 +141,6 @@ daily: {
     `
 },
 
-
-
-    // WEEKLY OVERVIEW
-
-    weekly: {
-
-        eyebrow: "YOUR WEEK AT A GLANCE",
-        title: "Weekly Overview 🗓",
-        description: "A flexible rhythm for everything you want to explore.",
-
-        content: `
-
-            <div class="workspace-banner green">
-                <span class="section-eyebrow">YOUR WEEKLY RHYTHM</span>
-                <h3>Make room for what matters.</h3>
-                <p>Use these themes as a guide, not a strict schedule.</p>
-            </div>
-
-            <section class="workspace-section">
-                <h3>Your pillar rotation</h3>
-
-                <div class="workspace-list">
-
-                    ${createWeeklySchedule([
-                        {day: "Monday", icon: "💻", pillar: "BUILD"},
-                        {day: "Tuesday", icon: "🚀", pillar: "ADVANCE"},
-                        {day: "Wednesday", icon: "📚", pillar: "LEARN"},
-                        {day: "Thursday", icon: "💻", pillar: "BUILD"},
-                        {day: "Friday", icon: "🚀", pillar: "ADVANCE"},
-                        {day: "Saturday", icon: "🌿", pillar: "LIVE"},
-                        {day: "Sunday", icon: "🌿", pillar: "LIVE / REST"}
-                    ])}
-
-                </div>
-            </section>
-
-            <div class="workspace-note green-note">
-                ✿ Remember: missed tasks are not debts.
-                Adjust your week as needed.
-            </div>
-
-        `
-    },
-
-
     // BUILD
 
     
