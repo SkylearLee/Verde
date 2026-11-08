@@ -461,77 +461,66 @@ create: {
         </div>
 
         <div id="advance-studio-root" class="advance-studio">
-            <div class="advance-welcome">
-                <div>
-                    <span class="section-eyebrow">YOUR CAREER JOURNEY</span>
-                    <h3>Opportunities worth pursuing.</h3>
-                    <p>
-                        Keep all your internship opportunities in one place.
-                        Track deadlines, application progress, and next steps.
-                    </p>
-                </div>
-            </div>
 
             <section id="advance-applications-view"></section>
-        </div>
+
+        </div> 
     `
 },
 
 
     // LIVE
 
+    
     live: {
+    eyebrow: "PILLAR 05 · EXPERIENCE & ENJOY",
+    title: "Live 🌿",
+    description: "Enjoy the life you're building.",
 
-        eyebrow: "PILLAR 05 · EXPERIENCE & ENJOY",
-        title: "Live 🌿",
-        description: "Enjoy the life you're building.",
+    content: `
+        <div id="live-studio-root" class="live-studio">
 
-        content: `
+            <div class="live-welcome">
+                <span class="section-eyebrow">A LITTLE REMINDER</span>
 
-            <div class="workspace-banner green">
-                <span class="section-eyebrow">GUILT-FREE LIVING</span>
-                <h3>You are allowed to just enjoy things.</h3>
+                <h2>Life isn't just about<br>
+                    <em>what you accomplish.</em>
+                </h2>
+
                 <p>
-                    This isn't another productivity project.
-                    It's a reminder that your life is happening right now.
+                    Make room for spontaneous adventures,
+                    little joys, new experiences, and doing
+                    absolutely nothing.
+                </p>
+
+                <div class="live-decoration">☘︎ ✿ ❀</div>
+            </div>
+
+            <section class="live-inspiration-section">
+
+                <div class="live-section-heading">
+                    <span class="section-eyebrow">WHEN YOU NEED A LITTLE INSPIRATION</span>
+                    <h3>What should we do today?</h3>
+                    <p>
+                        Let a little spontaneity decide.
+                    </p>
+                </div>
+
+                <div id="live-generator-root"></div>
+
+            </section>
+
+            <div class="live-bottom-note">
+                <span>🌿</span>
+                <p>
+                    You don't have to make every day meaningful.
+                    Sometimes enjoying an ordinary day is enough.
                 </p>
             </div>
 
-            <div class="workspace-grid">
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">🧗</span>
-                    <h4>Climbing & fitness</h4>
-                    <p>Bouldering, gym sessions, and physical activities.</p>
-                </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">🎨</span>
-                    <h4>Arts & crafts</h4>
-                    <p>Creative events and making things with your hands.</p>
-                </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">🍳</span>
-                    <h4>Cooking</h4>
-                    <p>New recipes, experimenting, and good food.</p>
-                </div>
-
-                <div class="workspace-card">
-                    <span class="workspace-icon">🫶</span>
-                    <h4>People & experiences</h4>
-                    <p>Friends, loved ones, exploring, and trying new things.</p>
-                </div>
-
-            </div>
-
-            <div class="workspace-note green-note">
-                🌿 No productivity scores. No required milestones.
-                Enjoy your life.
-            </div>
-
-        `
-    },
+        </div>
+    `
+},
 
 
     // IDEA VAULT
