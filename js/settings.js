@@ -84,9 +84,9 @@ function applyVerdeSettings() {
     const settings = getVerdeSettings();
     const theme = themePresets[settings.theme];
 
-    // Apply the selected color palette.
     const root = document.documentElement;
 
+    // Apply the selected color palette.
     root.style.setProperty("--purple", theme.accent);
     root.style.setProperty("--accent", theme.accent);
 
@@ -95,12 +95,11 @@ function applyVerdeSettings() {
 
     root.style.setProperty("--deep-purple", theme.deep);
 
-    // Update the other existing color variables too.
     root.style.setProperty("--sage", theme.accent);
     root.style.setProperty("--sage-light", theme.light);
     root.style.setProperty("--forest", theme.deep);
 
-    // Update the homepage greeting.
+    // Update homepage greeting.
     const welcomeHeading = document.querySelector(
         ".welcome-section h2"
     );
@@ -111,7 +110,7 @@ function applyVerdeSettings() {
             : `${settings.greeting}, explorer.`;
     }
 
-    // Update the homepage description.
+    // Update homepage description.
     const welcomeDescription = document.querySelector(
         ".welcome-section p"
     );
@@ -120,7 +119,7 @@ function applyVerdeSettings() {
         welcomeDescription.textContent = settings.description;
     }
 
-    // Update the profile icon.
+    // Update profile icon.
     const profileIcon = document.querySelector(".profile-icon");
 
     if (profileIcon) {
@@ -226,10 +225,8 @@ function initializeSettings() {
                             <i style="background:#9279B4"></i>
                             <i style="background:#EAE2F2"></i>
                         </span>
-
                         <span>Lavender</span>
                     </button>
-
 
                     <button
                         type="button"
@@ -240,10 +237,8 @@ function initializeSettings() {
                             <i style="background:#71876F"></i>
                             <i style="background:#E8EEE5"></i>
                         </span>
-
                         <span>Sage</span>
                     </button>
-
 
                     <button
                         type="button"
@@ -254,10 +249,8 @@ function initializeSettings() {
                             <i style="background:#C58E9C"></i>
                             <i style="background:#F5E5E9"></i>
                         </span>
-
                         <span>Rose</span>
                     </button>
-
 
                     <button
                         type="button"
@@ -268,7 +261,6 @@ function initializeSettings() {
                             <i style="background:#7298A8"></i>
                             <i style="background:#E3EFF2"></i>
                         </span>
-
                         <span>Ocean</span>
                     </button>
 
@@ -277,6 +269,86 @@ function initializeSettings() {
                 <p class="settings-note">
                     Your theme is saved automatically ♡
                 </p>
+
+            </section>
+
+
+            <!-- DATA & PRIVACY -->
+
+            <section class="panel settings-panel settings-data-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="eyebrow">YOUR INFORMATION, YOURS TO KEEP</span>
+                        <h3>Data & Privacy ♡</h3>
+                    </div>
+
+                    <span class="panel-icon">✧</span>
+                </div>
+
+                <p class="settings-intro">
+                    Your VERDE universe holds your ideas, projects,
+                    journal entries, and little milestones. Keep a backup
+                    so they're always yours.
+                </p>
+
+                <div class="data-action-card">
+
+                    <div class="data-action-icon">↓</div>
+
+                    <div class="data-action-info">
+                        <strong>Export your VERDE data</strong>
+                        <small>
+                            Download a backup of your saved information.
+                        </small>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="data-action-button"
+                        id="export-verde-data"
+                    >
+                        Export
+                    </button>
+
+                </div>
+
+                <div class="data-action-card">
+
+                    <div class="data-action-icon">↑</div>
+
+                    <div class="data-action-info">
+                        <strong>Restore a backup</strong>
+                        <small>
+                            Bring your saved information back from a backup file.
+                        </small>
+                    </div>
+
+                    <label
+                        for="import-verde-data"
+                        class="data-action-button"
+                    >
+                        Import
+                    </label>
+
+                    <input
+                        type="file"
+                        id="import-verde-data"
+                        accept=".json,application/json"
+                        hidden
+                    >
+
+                </div>
+
+                <p class="settings-note">
+                    Your backups are stored on your device.
+                </p>
+
+                <p
+                    class="data-status-message"
+                    id="data-status-message"
+                    aria-live="polite"
+                ></p>
 
             </section>
 
@@ -293,14 +365,14 @@ function initializeSettings() {
         </div>
     `;
 
-    // Restore the saved greeting.
+    // Restore saved greeting.
     document.getElementById("settings-greeting").value =
         settings.greeting;
 
-    // Highlight the currently selected theme.
+    // Highlight selected theme.
     updateThemeSelection(settings.theme);
 
-    // Save profile changes.
+    // Connect profile inputs.
     const profileInputs = [
         "settings-name",
         "settings-greeting",
@@ -314,7 +386,7 @@ function initializeSettings() {
         input.addEventListener("change", saveProfileFromForm);
     });
 
-    // Connect the theme buttons.
+    // Connect theme buttons.
     root.querySelectorAll(".theme-option").forEach(button => {
 
         button.addEventListener("click", () => {
@@ -323,21 +395,31 @@ function initializeSettings() {
 
             updatedSettings.theme = button.dataset.theme;
 
-            // Save the selected theme.
             saveVerdeSettings(updatedSettings);
 
-            // Apply the new colors immediately.
             applyVerdeSettings();
 
-            // Update the selected button.
             updateThemeSelection(updatedSettings.theme);
 
-            // Show confirmation.
             showSettingsSaved();
 
         });
 
     });
+
+    // Connect export button.
+    const exportButton = document.getElementById("export-verde-data");
+
+    if (exportButton) {
+        exportButton.addEventListener("click", exportVerdeData);
+    }
+
+    // Connect import button.
+    const importInput = document.getElementById("import-verde-data");
+
+    if (importInput) {
+        importInput.addEventListener("change", importVerdeData);
+    }
 }
 
 /* ==========================================
@@ -399,7 +481,8 @@ function showSettingsSaved() {
     );
 
     if (message) {
-        message.textContent = "Your changes are saved automatically ♡";
+        message.textContent =
+            "Your changes are saved automatically ♡";
     }
 }
 
@@ -414,6 +497,177 @@ function escapeSettingsValue(value) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}
+
+/* ==========================================
+   DATA & PRIVACY
+========================================== */
+
+// Collect saved VERDE information.
+function getVerdeData() {
+    const data = {};
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+
+        if (key && key.startsWith("verde_")) {
+            data[key] = localStorage.getItem(key);
+        }
+    }
+
+    return data;
+}
+
+// Display backup status.
+function showDataStatus(message, isError = false) {
+    const status = document.getElementById(
+        "data-status-message"
+    );
+
+    if (!status) return;
+
+    status.textContent = message;
+    status.classList.toggle("error", isError);
+}
+
+// Export VERDE data.
+function exportVerdeData() {
+
+    try {
+        const backup = {
+            app: "VERDE",
+            backupVersion: 1,
+            exportedAt: new Date().toISOString(),
+            data: getVerdeData()
+        };
+
+        const file = new Blob(
+            [JSON.stringify(backup, null, 2)],
+            { type: "application/json" }
+        );
+
+        const url = URL.createObjectURL(file);
+        const link = document.createElement("a");
+
+        const date = new Date().toISOString().slice(0, 10);
+
+        link.href = url;
+        link.download = `verde-backup-${date}.json`;
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        URL.revokeObjectURL(url);
+
+        showDataStatus("Your VERDE backup is ready! ♡");
+
+    } catch (error) {
+        console.error("VERDE export failed:", error);
+
+        showDataStatus(
+            "Something went wrong while exporting.",
+            true
+        );
+    }
+}
+
+// Import and restore VERDE data.
+async function importVerdeData(event) {
+
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    try {
+        const contents = await file.text();
+        const backup = JSON.parse(contents);
+
+        // Validate backup format.
+        if (
+            backup.app !== "VERDE" ||
+            backup.backupVersion !== 1 ||
+            !backup.data ||
+            typeof backup.data !== "object" ||
+            Array.isArray(backup.data)
+        ) {
+            throw new Error("Invalid VERDE backup.");
+        }
+
+        const entries = Object.entries(backup.data);
+
+        if (
+            entries.length === 0 ||
+            entries.some(([key, value]) =>
+                !key.startsWith("verde_") ||
+                typeof value !== "string"
+            )
+        ) {
+            throw new Error("Invalid backup contents.");
+        }
+
+        // Confirm before replacing existing information.
+        const confirmed = window.confirm(
+            "Restoring this backup will replace your current VERDE " +
+            "saved data. We recommend exporting your current data " +
+            "first. Continue?"
+        );
+
+        if (!confirmed) {
+            showDataStatus(
+                "Restore cancelled. Your data is unchanged."
+            );
+            return;
+        }
+
+        // Preserve existing data in case restoration fails.
+        const previousData = getVerdeData();
+
+        try {
+            // Remove existing VERDE data.
+            Object.keys(previousData).forEach(key => {
+                localStorage.removeItem(key);
+            });
+
+            // Restore backup information.
+            entries.forEach(([key, value]) => {
+                localStorage.setItem(key, value);
+            });
+
+        } catch (error) {
+
+            // Attempt to recover previous data.
+            Object.keys(getVerdeData()).forEach(key => {
+                localStorage.removeItem(key);
+            });
+
+            Object.entries(previousData).forEach(([key, value]) => {
+                localStorage.setItem(key, value);
+            });
+
+            throw error;
+        }
+
+        showDataStatus(
+            "Your VERDE backup was restored! Refreshing... ♡"
+        );
+
+        window.setTimeout(() => {
+            window.location.reload();
+        }, 1200);
+
+    } catch (error) {
+
+        console.error("VERDE import failed:", error);
+
+        showDataStatus(
+            "We couldn't restore this file. Please check that it's a valid VERDE backup.",
+            true
+        );
+
+    } finally {
+        event.target.value = "";
+    }
 }
 
 /* ==========================================
